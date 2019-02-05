@@ -1,0 +1,175 @@
+SELECT classement_ida2a.releve_numero, libelle AS discipline, 
+    note.valeur_1, note.valeur_2, note.valeur_3, note.valeur_4, note.valeur_5, 
+    SOM_NOTES, NB_NOTES,
+    Round((SOM_NOTES/NB_NOTES),2) AS moyenne_matiere, coefficient, 
+    coefficient*Round((SOM_NOTES/NB_NOTES),2) AS moyenne_ponderee, rang_matiere,
+    CASE WHEN Round((SOM_NOTES/NB_NOTES),2)<=20.00 AND Round((SOM_NOTES/NB_NOTES),2)>18.00 THEN 'Excellent'
+        WHEN Round((SOM_NOTES/NB_NOTES),2)<=18.00 AND Round((SOM_NOTES/NB_NOTES),2)>=16.00 THEN 'Très Bien'
+        WHEN Round((SOM_NOTES/NB_NOTES),2)<16.00 AND Round((SOM_NOTES/NB_NOTES),2)>=14.00 THEN 'Bien'
+        WHEN Round((SOM_NOTES/NB_NOTES),2)<14.00 AND Round((SOM_NOTES/NB_NOTES),2)>=12.00 THEN 'Assez Bien'
+        WHEN Round((SOM_NOTES/NB_NOTES),2)<12.00 AND Round((SOM_NOTES/NB_NOTES),2)>=10.00 THEN 'Passable'
+        WHEN Round((SOM_NOTES/NB_NOTES),2)<10.00 AND Round((SOM_NOTES/NB_NOTES),2)>=08.00 THEN 'Insuffisant'
+        WHEN Round((SOM_NOTES/NB_NOTES),2)<08.00 AND Round((SOM_NOTES/NB_NOTES),2)>=06.00 THEN 'Faible'
+    END AS appreciation_matiere
+    --professeur.nom ||' '|| professeur.prenom AS professeur
+
+    FROM sess INNER JOIN 
+    (releve INNER JOIN 
+        (matiere INNER JOIN (
+            ((classe INNER JOIN matiere_classe ON classe.id = matiere_classe.classe_id) INNER JOIN 
+            eleve ON classe.id = eleve.classe_id) INNER JOIN 
+            (
+                (
+                    SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_algo_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_analyse_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_anglais_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_assidute_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_bd_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_c_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_compta_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_conduite_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_droit_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_economie_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_francais_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_math_fin_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_math_gene_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_nego_info_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_php_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_projet_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_se_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_teleinfo_sem1_ida2a
+                                UNION
+                                SELECT 
+                                    CASE WHEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)=1 
+                                        THEN RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'er'
+                                        ELSE RANK() OVER (ORDER BY MOYENNE_MATIERE DESC)||' '||'ème'
+                                    END AS rang_matiere, matiere_code, releve_numero
+                                FROM moyenne_vb_sem1_ida2a
+                    
+                )  
+                classement_ida2a INNER JOIN 
+                (
+                    SELECT (CASE WHEN note.valeur_1 is null THEN 0 ELSE note.valeur_1 END +
+                                CASE WHEN note.valeur_2 is null THEN 0 ELSE note.valeur_2 END +
+                                CASE WHEN note.valeur_3 is null THEN 0 ELSE note.valeur_3 END +
+                                CASE WHEN note.valeur_4 is null THEN 0 ELSE note.valeur_4 END +
+                                CASE WHEN note.valeur_5 is null THEN 0 ELSE note.valeur_5 END 
+                                ) AS SOM_NOTES,
+                                (
+                                CASE WHEN note.valeur_1 is null THEN 0 ELSE 1 END +
+                                CASE WHEN note.valeur_2 is null THEN 0 ELSE 1 END +
+                                CASE WHEN note.valeur_3 is null THEN 0 ELSE 1 END +
+                                CASE WHEN note.valeur_4 is null THEN 0 ELSE 1 END +
+                                CASE WHEN note.valeur_5 is null THEN 0 ELSE 1 END 
+                                ) AS NB_NOTES, matiere_code, releve_id, eleve_matricule, valeur_1, valeur_2, valeur_3, valeur_4, valeur_5
+                                FROM note
+                )
+                note ON (classement_ida2a.matiere_code = note.matiere_code) AND (classement_ida2a.releve_numero = note.releve_id)) ON eleve.matricule = note.eleve_matricule) ON (matiere.code = note.matiere_code) AND (matiere.code = matiere_classe.matiere_code)) ON releve.id = note.releve_id) ON sess.id = releve.session_id
+    ORDER BY classement_ida2a.releve_numero, matiere.code;

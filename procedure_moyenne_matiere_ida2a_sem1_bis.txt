@@ -1,0 +1,345 @@
+v_nCount integer;
+  v_sql long;
+  BEGIN
+    -- TODO : implémentation requise pour PROCEDURE GESTIONRELEVEID2A.PRC_MOY_MATIERE_IDA2A_SEM1
+    -- ALGORITHME
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_ALGO_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_ALGO_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''ALGO'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P1;
+
+        END IF;
+
+        -- ANALYSE
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_ANALYSE_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_ANALYSE_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''ANA'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P2;
+
+        END IF;
+
+        -- ANGLAIS
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_ANGLAIS_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_ANGLAIS_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''ANGLAIS'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P3;
+
+        END IF;
+
+        -- ASSIDUTE
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_ASSIDUTE_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_ASSIDUTE_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''ASSIDUTE'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P4;
+
+        END IF;
+
+        -- BASE DE DONNEES
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_BD_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_BD_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''BD'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P5;
+
+        END IF;
+
+        -- LANGAGE C
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_C_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_C_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''C'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P6;
+
+        END IF;
+
+        -- COMPTABILITE
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_COMPTA_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_COMPTA_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''COMPTA'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P7;
+
+        END IF;
+
+        -- CONDUITE
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_CONDUITE_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_CONDUITE_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''CONDUITE'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P8;
+
+        END IF;
+
+        -- DROIT
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_DROIT_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_DROIT_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''DROIT'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P9;
+
+        END IF;
+
+        -- ECONOMIE
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_ECONOMIE_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_ECONOMIE_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''ECO'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P10;
+
+        END IF;
+
+        -- FRANCAIS
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_FRANCAIS_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_FRANCAIS_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''FR'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P11;
+
+        END IF;
+
+        -- MATHEMATIQUE FINANCIERE
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_MATH_FIN_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_MATH_FIN_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''MATH FIN'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P12;
+
+        END IF;
+
+        -- MATHEMATIQUE GENERALE
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_MATH_GENE_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_MATH_GENE_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''MATH GENE'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P13;
+
+        END IF;
+
+        -- NEGOCIATION INFORMATIQUE
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_NEGO_INFO_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_NEGO_INFO_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''NEGO INFO'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P14;
+
+        END IF;
+
+        -- LANGAGE PHP
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_PHP_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_PHP_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''PHP'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P15;
+
+        END IF;
+
+        -- PROJET
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_PROJET_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_PROJET_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''PROJET'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P16;
+
+        END IF;
+
+        -- SYSTEME D'EXPLOITATION
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_SE_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_SE_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''SE'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P17;
+
+        END IF;
+
+        -- TELEINFORMATIQUE
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_TELEINFO_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_TELEINFO_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''TELEINFO'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P18;
+
+        END IF;
+
+        -- VISUAL BASIC
+
+        SELECT count(table_name) into v_nCount 
+        FROM user_tables 
+        WHERE table_name = 'MOYENNE_VB_SEM1_IDA2A';
+
+        IF(v_nCount=1) THEN 
+
+            -- Requete d'insertion
+            v_sql := 'INSERT INTO MOYENNE_VB_SEM1_IDA2A
+            SELECT session_nom, releve_id, matricule, classe_nom, moyenne_matiere, matiere_code
+            FROM MOYENNE_SESSION
+            WHERE (classe_nom=''IDA2/A'') AND (matiere_code=''VB'') AND (session_nom=''1er Semestre'')';
+            EXECUTE IMMEDIATE v_sql;
+            SAVEPOINT P19;
+
+        END IF;
